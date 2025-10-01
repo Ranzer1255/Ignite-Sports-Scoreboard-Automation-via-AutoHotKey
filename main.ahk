@@ -8,4 +8,4 @@
 writeModeToFile()
 
 ;background functions
-SetTimer(isPublished,1500)
+SetTimer(writePublishedToFile,1500)

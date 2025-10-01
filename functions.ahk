@@ -210,7 +210,7 @@ clickPublish(){
         if A_Index > 4 
             break
     }
-    isPublished
+    writePublishedToFile
 }
 
 clickEditSigns(){
@@ -264,7 +264,7 @@ ClickContent(content){
 }
 
 ;updates the published.txt file with the current published status
-isPublished(){
+writePublishedToFile(){
     ; pixel location 1154, 774
     ; off color 0x999999
     ; on  color 0xF1C400
