@@ -206,7 +206,7 @@ clickPublish(){
     ;click publish
     while PixelGetColor(1165,775) != 0xF1C400 {
         click 1175,770
-        sleep 50
+        sleep 150
         if A_Index > 4 
             break
     }
@@ -248,6 +248,7 @@ LoadXkeysPreset(preset){
 
     ;deal with popup
     send "{Enter}"
+    sleep 50
 }
 
 ClickContent(content){

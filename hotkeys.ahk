@@ -218,7 +218,9 @@ F24::{
 !F5::{
     switchToOpConsole
     LoadXkeysPreset("1 - split")
+    sleep 50
     clickCenterPane
+    sleep 50
     clickPublish
 }
 
