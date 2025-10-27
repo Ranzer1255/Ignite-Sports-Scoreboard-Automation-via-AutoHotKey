@@ -1,5 +1,6 @@
 #Requires AutoHotkey v2.0.7+
 
+#Include globalVars.ahk
 #include functions.ahk
 
 ;Alt + Letter-Keys
@@ -185,7 +186,7 @@ F14::{
 
 ;Load FB Scoreboard
 F15::{
-    LoadXkeysPreset("1 - split")
+    LoadXkeysPreset(FootballScoreboardLayout)
     clickPublish
 }
 
@@ -217,7 +218,7 @@ F24::{
 ;Xkeys Generic Scoreboard
 !F5::{
     switchToOpConsole
-    LoadXkeysPreset("1 - split")
+    LoadXkeysPreset(FootballScoreboardLayout)
     sleep 50
     clickCenterPane
     sleep 50

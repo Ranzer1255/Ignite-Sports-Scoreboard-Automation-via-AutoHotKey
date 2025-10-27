@@ -230,6 +230,7 @@ clickClearSigns(){
         if A_Index > 4 
             break
     }
+    writePublishedToFile
 }
 
 LoadXkeysPreset(preset){

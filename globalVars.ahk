@@ -17,10 +17,12 @@ spots :=   [[1, 1],
             [3, 1],
             [3, 2],
             [3, 3],
-            [3, 4]
-           ;[3, 5]
+            [3, 4],
+            [3, 5],
+            [4, 1]
         ]
 
+; Array of Get Loud Reaction buttons on the Reaction Tab
 getLoud := [[3,5],
             [4,1]
         ]
@@ -47,3 +49,6 @@ flashes := [[1, 1],
             [4, 4],
             [4, 5]
         ]
+
+;this is the used Foootball scoreboard layout across the script, the Default is: "1 - split"
+FootballScoreboardLayout := "4 - hallo"
