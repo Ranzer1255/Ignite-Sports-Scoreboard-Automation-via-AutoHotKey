@@ -197,7 +197,7 @@ Search(searchString){
     click 1745, 70
     sleep 50
     
-    SendText searchString
+    Send searchString
 }
 
 clickPublish(){
