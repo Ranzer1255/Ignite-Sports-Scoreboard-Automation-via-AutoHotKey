@@ -130,14 +130,9 @@ writeModeToFile(){
 
 readContentStringFromFile(){
 
-    global txtFilesLocation
+    variable := "loadContent"
 
-    contentFile := txtFilesLocation . "\content.txt"
-    fileObj := FileOpen(contentFile,"rw")
-
-    contentString := fileObj.ReadLine()
-
-    fileObj.Close
+    contentString := ReadBitfocusCustomVariable(variable)
 
     return contentString
 }
