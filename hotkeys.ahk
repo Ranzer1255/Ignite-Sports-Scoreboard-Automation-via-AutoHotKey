@@ -70,20 +70,14 @@
 ;Alt+m: switch modes between CC animations (0) and Live video (1)
 !m::{
 
-    global mode
-
-    if(!IsSet(mode)) {
-        mode := 0
-    }
-
-    if(mode==1){
-        mode := 0
+    if(mode=IdleMode.CC){
+        mode := IdleMode.Live
         writeModeToBitfocus()
-        MsgBox "cc mode", "Mode", "t2"
+        MsgBox "Live Video mode", "Mode", "t2"
     } else {
-        mode := 1
+        mode := IdleMode.CC
         writeModeToBitfocus()
-        MsgBox "live video mode", "Mode", "T2"
+        MsgBox "CC mode", "Mode", "T2"
     }
 }
 
