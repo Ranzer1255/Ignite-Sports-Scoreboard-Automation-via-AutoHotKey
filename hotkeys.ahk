@@ -3,7 +3,32 @@
 #Include globalVars.ahk
 #include functions.ahk
 
+;Alt + Number Buttons - Layout Switching
+
+;layout 1
+!1::{
+    switchToOpConsole
+    clickUsedLayouts
+    clickBottomPanelButton(1,1)
+    ; clickPublish
+}
+
+!2::{
+    switchToOpConsole
+    clickUsedLayouts
+    clickBottomPanelButton(1,3)
+    ; clickPublish
+}
+
+
 ;Alt + Letter-Keys
+
+;Blank Center Pannel
+!b::{
+    switchToOpConsole
+    clickCenterPane
+    clickBlank
+}
 
 ;waving flag
 !f::{
@@ -15,6 +40,9 @@
 ; get loud!
 !g::{
     global getLoud
+
+    switchToOpConsole
+    clickCenterPane
 
     clickReactionTab
     button := Random(1,getLoud.Length)
