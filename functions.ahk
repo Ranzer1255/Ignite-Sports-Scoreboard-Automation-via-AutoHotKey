@@ -1,6 +1,7 @@
 #Requires AutoHotkey v2.0
 
 #Include globalVars.ahk
+#Include utils.ahk
 
 /*
 this method generates the X,Y coords for the mouse click in the bottom pannel from 
@@ -115,19 +116,6 @@ clickReactionTab(){
     sleep 50
 }
 
-
-writeModeToBitfocus(){
-    global mode
-    variable := "ignightMode"
-
-    switch mode{
-        case 0: ;CC
-            WrtieBitfocusCustomVariable(variable,"CC")
-        case 1: ;Live
-            WrtieBitfocusCustomVariable(variable,"Live")
-    }
-}
-
 readContentStringFromBitfocus(){
 
     variable := "loadContent"
@@ -135,62 +123,6 @@ readContentStringFromBitfocus(){
     contentString := ReadBitfocusCustomVariable(variable)
 
     return contentString
-}
-
-clickFlash(key:=0){
-    ;set the key pushed
-    global lastKey := key
-    
-    clickCenterPane()
-
-    ;switch to flash tab
-    click 1550,270
-
-    ;will click flashes in this order
-    ;note if these need to be adjusted, use the Client position under the mouse positions in Windows Spy
-    ;the hight of the bottom pannel has about 30px wiggle room try to get it just under the frame for
-    ;the frame of the first row of boxes int he top window
-
-    global flashes
-    static i := Random(1,flashes.Length)
-
-    ;allow skipping the clicker sleep when rerun, so this can be also used to clear 
-    clickBottomPanelButton(flashes[i][1],flashes[i][2])
-    
-    ;move to next flash on next key press
-    if i<flashes.Length {
-        i := i+1
-    } else {
-        i := 1
-    }
-}
-
-returnToDefaultScreen(){
-
-    ;are we doing live video (1) or CC animations (0)
-    global mode
-
-    if !IsSet(mode){
-        mode := 0
-        writeModeToBitfocus()
-    }
-
-    ;live video mode
-    if (mode = 1){
-        clickLive
-        
-    ;cc animation mode
-    } else { 
-        clickCCTab
-
-        Search("cc")
- 
-        ;click random static image
-        restingButton := random(1, 5)
-        clickTopPanelButton(restingButton)
-    }
-
-
 }
 
 Search(searchString){
@@ -216,7 +148,7 @@ clickPublish(){
     while PixelGetColor(1165,775) != 0xF1C400 {
         click 1175,770
         sleep 150
-        if A_Index > 4 
+        if A_Index > 5 
             break
     }
     writePublishedToBitfocus
@@ -226,7 +158,7 @@ clickEditSigns(){
     while (PixelGetColor(1165,775) == 0xF1C400) {
         click 1170,890
         sleep 50
-        if A_Index > 4
+        if A_Index > 5
             break
     }
     writePublishedToBitfocus
@@ -246,17 +178,16 @@ clickClearSigns(){
     writePublishedToBitfocus
 }
 
-LoadXkeysPreset(preset, newSport){
+; expects a layouts class object
+LoadXkeysPreset(layout){
+    global currentSport
+    newSport := layout[3]
     WinActivate "Ignite Sports"
+    send "{Enter}"
 
-    clickLayoutTab
+    clickUsedLayouts
     
-    ;search for layout
-    Search(preset)
-
-    clickTopPanelButton(1)
-    sleep 50
-    clickTopPanelButton(1)
+    clickBottomPanelButton(layout[1],layout[2])
 
     if(newSport == Sport.None || newSport == currentSport) 
         return ;not changing sports. dont wait for the popup and move on...
@@ -315,7 +246,6 @@ isOpConsole(){
 }
 
 switchToOpConsole(){
-    ; MsgBox isOpConsole()
     if !isOpConsole() {
         ;menu
         click 25,50
@@ -349,45 +279,4 @@ clickDown(down){
         default:
             
     }
-}
-
-WrtieBitfocusCustomVariable(variable, value){
-    Url := bitfocusAPIBaseURL . "/custom-variable/" . variable . "/value?value=" . value
-    
-    ; --- HTTP Request using WinHTTP COM Object ---
-    try {
-        HttpRequest := ComObject("WinHttp.WinHttpRequest.5.1")
-        
-        ; Open the POST request (synchronous)
-        HttpRequest.Open("POST", Url, false) 
-        
-        ; Send the request with an empty body
-        HttpRequest.Send("") 
-        
-        ; Return only the HTTP Status Code
-        return HttpRequest.Status
-        
-    } catch {
-        ; Return 0 for a connection or COM script error
-        return 0 
-    }
-}
-
-ReadBitfocusCustomVariable(variable){
-    Url := bitfocusAPIBaseURL . "/custom-variable/" . variable . "/value"
-
-    try {
-        HttpRequest := ComObject("WinHttp.WinHttpRequest.5.1")
-        
-        ; Open the POST request (synchronous)
-        HttpRequest.Open("GET", Url, false) 
-        
-        ; Send the request with an empty body
-        HttpRequest.Send("")
-        
-        return HttpRequest.ResponseText
-    } catch as e{
-        MsgBox e.Message
-        return ""
-    } 
 }

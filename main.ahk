@@ -5,7 +5,5 @@
 #Include hotkeys.ahk
 #Include utils.ahk
 
-writeModeToBitfocus()
-
 ;background functions
 SetTimer(writePublishedToBitfocus,5000)
