@@ -378,6 +378,7 @@ ReadBitfocusCustomVariable(variable){
         
         return HttpRequest.ResponseText
     } catch as e{
-        return e.Message
+        MsgBox e.Message
+        return ""
     } 
 }
