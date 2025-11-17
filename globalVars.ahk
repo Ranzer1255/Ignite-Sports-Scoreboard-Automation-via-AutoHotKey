@@ -2,7 +2,6 @@
 
 ;Global Variables
 mode := 1
-txtFilesLocation := "\\files\ScoreboardStatus"
 ;Video spot array
 spots :=   [[1, 1],
             [1, 2],
@@ -52,3 +51,5 @@ flashes := [[1, 1],
 
 ;this is the used Foootball scoreboard layout across the script, the Default is: "1 - split"
 FootballScoreboardLayout := "transparent"
+
+bitfocusAPIBaseURL := "http://10.7.199.2:1255/api"
