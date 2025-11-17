@@ -55,6 +55,12 @@ clickLive(){
     clickTopPanelButton(2)
 }
 
+clickBlank(){
+    WinActivate "Ignite Sports"
+    click 1276, 40
+    clickTopPanelButton(1)
+}
+
 clickContentTab(){
     WinActivate "Ignite Sports"
     ;click content tab
@@ -85,6 +91,19 @@ clickLayoutTab(){
     click 1793, 40
     sleep 50
     click 1793, 40
+    sleep 50
+}
+
+clickUsedLayouts(){
+    WinActivate "Ignite Sports"
+    Click 1720, 270
+    sleep 50
+    ;twice to make sure
+    Click 1720, 270
+    sleep 50
+    Click 1720, 270
+    sleep 50
+    Click 1720, 270
     sleep 50
 }
 
