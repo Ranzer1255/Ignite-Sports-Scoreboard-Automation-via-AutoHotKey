@@ -376,8 +376,8 @@ ReadBitfocusCustomVariable(variable){
         ; Send the request with an empty body
         HttpRequest.Send("")
         
-        return HttpRequest.body
-    } catch {
-        return "Error"
+        return HttpRequest.ResponseText
+    } catch as e{
+        return e.Message
     } 
 }
