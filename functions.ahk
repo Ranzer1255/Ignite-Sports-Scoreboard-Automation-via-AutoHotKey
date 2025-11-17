@@ -122,9 +122,9 @@ writeModeToFile(){
 
     switch mode{
         case 0: ;CC
-                WrtieBitfocusCustomVariable(variable,"CC")
-        case 1: ;Live  
-                WrtieBitfocusCustomVariable(variable,"Live")
+            WrtieBitfocusCustomVariable(variable,"CC")
+        case 1: ;Live
+            WrtieBitfocusCustomVariable(variable,"Live")
     }
 }
 
@@ -348,7 +348,7 @@ clickDown(down){
 }
 
 WrtieBitfocusCustomVariable(variable, value){
-    Url := bitfocusAPIBaseURL . "/custom-variable/" . variable . "/value?value=" . mode
+    Url := bitfocusAPIBaseURL . "/custom-variable/" . variable . "/value?value=" . value
     
     ; --- HTTP Request using WinHTTP COM Object ---
     try {
