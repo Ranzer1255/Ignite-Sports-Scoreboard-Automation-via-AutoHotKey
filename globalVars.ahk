@@ -52,3 +52,5 @@ flashes := [[1, 1],
 
 ;this is the used Foootball scoreboard layout across the script, the Default is: "1 - split"
 FootballScoreboardLayout := "transparent"
+
+bitfocusAPIBaseURL := "10.7.199.2:1255/api"

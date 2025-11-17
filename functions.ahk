@@ -118,19 +118,14 @@ clickReactionTab(){
 
 writeModeToFile(){
     global mode
-    global txtFilesLocation
-
-    modeFile := txtFilesLocation . "\mode.txt"
-    fileObj := FileOpen(modeFile,"w")
+    variable := "ignightMode"
 
     switch mode{
         case 0: ;CC
-            fileObj.Write("CC")
+                WrtieBitfocusCustomVariable(variable,"CC")
         case 1: ;Live  
-            fileObj.Write("Live")
+                WrtieBitfocusCustomVariable(variable,"Live")
     }
-
-    fileObj.Close()
 }
 
 readContentStringFromFile(){
@@ -294,19 +289,16 @@ writePublishedToFile(){
     if WinActive("Ignite Sports"){
         pixel := PixelGetColor(1154,774)
 
-        filePath := txtFilesLocation . "\published.txt"
-        fileObj := FileOpen(filepath,"w")
+        variable := "ignitePublished"
 
         switch pixel{
             case 0x999999: ;off
-                fileObj.Write("off")
+                WrtieBitfocusCustomVariable(variable,"off")
             case 0xF1C400: ;on  
-                fileObj.Write("on")
+                WrtieBitfocusCustomVariable(variable,"on")
             default: 
-                fileObj.Write("ERR: WRONG PAGE")
+                WrtieBitfocusCustomVariable(variable,"ERR: WRONG PAGE")
         }
-
-        fileObj.Close()
     }
 }
 
@@ -353,4 +345,44 @@ clickDown(down){
         default:
             
     }
+}
+
+WrtieBitfocusCustomVariable(variable, value){
+    Url := bitfocusAPIBaseURL . "/custom-variable/" . variable . "/value?value=" . mode
+    
+    ; --- HTTP Request using WinHTTP COM Object ---
+    try {
+        HttpRequest := ComObject("WinHttp.WinHttpRequest.5.1")
+        
+        ; Open the POST request (synchronous)
+        HttpRequest.Open("POST", Url, false) 
+        
+        ; Send the request with an empty body
+        HttpRequest.Send("") 
+        
+        ; Return only the HTTP Status Code
+        return HttpRequest.Status
+        
+    } catch {
+        ; Return 0 for a connection or COM script error
+        return 0 
+    }
+}
+
+ReadBitfocusCustomVariable(variable){
+    Url := bitfocusAPIBaseURL . "/custom-variable/" . variable . "/value"
+
+    try {
+        HttpRequest := ComObject("WinHttp.WinHttpRequest.5.1")
+        
+        ; Open the POST request (synchronous)
+        HttpRequest.Open("GET", Url, false) 
+        
+        ; Send the request with an empty body
+        HttpRequest.Send("")
+        
+        return HttpRequest.body
+    } catch {
+        return "Error"
+    } 
 }
