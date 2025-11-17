@@ -35,10 +35,10 @@
     clickEditSigns
 }
 
-;waving flag
+;waving flag TODO Reduntant remove
 !f::{
     switchToOpConsole
-    LoadXkeysPreset("pregame - full")
+    LoadXkeysPreset("pregame - full",Sport.Football)
     clickPublish
 }
 
@@ -164,12 +164,12 @@ F9::{
     clickBottomPanelButton(2,2)
 }
 
-;run 30sec spot
+;run 30sec spot TODO remove this. all 30s spots are now in vMix
 F11::{
     clickCenterPane
     global lastKey := 11
 
-    LoadXkeysPreset("4 - Full")
+    LoadXkeysPreset("4 - Full",Sport.Football)
     clickCenterPane
 
     global spots
@@ -201,7 +201,7 @@ F12::{
 
 ;Full screen
 F13::{
-    LoadXkeysPreset("4 - full")
+    LoadXkeysPreset("4 - full", Sport.Football)
     clickPublish
 }
 
@@ -211,15 +211,9 @@ F14::{
     clickLive
 }
 
-;Load FB Scoreboard
-F15::{
-    LoadXkeysPreset(FootballScoreboardLayout)
-    clickPublish
-}
-
-;Halftime
+;Halftime Redundant 
 F16::{
-    LoadXkeysPreset("HT - Full")
+    LoadXkeysPreset("HT - Full",Sport.Football)
     clickCenterPane
     returnToDefaultScreen
     clickPublish
@@ -229,13 +223,13 @@ F16::{
 ;General Evac
 F23::{
     switchToOpConsole
-    LoadXkeysPreset("88GE -")
+    LoadXkeysPreset("88GE -",Sport.None)
     clickPublish
 }
 ;Weather emergency alert
 F24::{
     switchToOpConsole
-    LoadXkeysPreset("88WE -")
+    LoadXkeysPreset("88WE -",Sport.None)
     clickPublish
 }
 
@@ -245,7 +239,7 @@ F24::{
 ;Xkeys Generic Scoreboard
 !F5::{
     switchToOpConsole
-    LoadXkeysPreset(FootballScoreboardLayout)
+    LoadXkeysPreset(FootballScoreboardLayout,Sport.Football)
     sleep 50
     clickCenterPane
     sleep 50
@@ -255,14 +249,14 @@ F24::{
 ;Xkeys Soccer
 !F6::{
     switchToOpConsole
-    LoadXkeysPreset("21 - ")
+    LoadXkeysPreset("21 - ",Sport.Soccer)
     clickPublish
 }
 
 ;Xkeys Special
 !F7::{
     switchToOpConsole
-    LoadXkeysPreset("99S - ")
+    LoadXkeysPreset("99S - ",Sport.Football)
     clickPublish
 }
 
@@ -274,13 +268,13 @@ F24::{
 ;Hosted Playoff Scoreboard
 !F9::{
     switchToOpConsole
-    LoadXkeysPreset("3 - split")
+    LoadXkeysPreset("3 - split",Sport.Football)
     clickPublish
 }
 
 ;Testmode
 !F24::{
     switchToOpConsole
-    LoadXkeysPreset("Test Mode")
+    LoadXkeysPreset("Test Mode",Sport.None)
     clickPublish
 }

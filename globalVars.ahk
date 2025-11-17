@@ -61,6 +61,7 @@ bitfocusAPIBaseURL := "http://10.7.199.2:1255/api"
 Class Sport {
     static Football => "Football"
     static Soccer   => "Soccer"
+    static None     => "none"
 }
 
 Class IdleMode {

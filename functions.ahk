@@ -246,7 +246,7 @@ clickClearSigns(){
     writePublishedToBitfocus
 }
 
-LoadXkeysPreset(preset){
+LoadXkeysPreset(preset, newSport){
     WinActivate "Ignite Sports"
 
     clickLayoutTab
@@ -258,11 +258,16 @@ LoadXkeysPreset(preset){
     sleep 50
     clickTopPanelButton(1)
 
-    sleep 1250
+    if(newSport == Sport.None || newSport == currentSport) 
+        return ;not changing sports. dont wait for the popup and move on...
 
+
+    sleep 1250
     ;deal with popup
     send "{Enter}"
     sleep 50
+    currentSport := newSport
+    WrtieBitfocusCustomVariable("igniteSport",currentSport)
 }
 
 ClickContent(content){
