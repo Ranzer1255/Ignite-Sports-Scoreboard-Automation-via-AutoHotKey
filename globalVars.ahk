@@ -2,7 +2,6 @@
 
 ;Global Variables
 mode := 1
-txtFilesLocation := "\\files\ScoreboardStatus"
 ;Video spot array
 spots :=   [[1, 1],
             [1, 2],

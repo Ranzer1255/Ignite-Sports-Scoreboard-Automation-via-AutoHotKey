@@ -116,7 +116,7 @@ clickReactionTab(){
 }
 
 
-writeModeToFile(){
+writeModeToBitfocus(){
     global mode
     variable := "ignightMode"
 
@@ -128,7 +128,7 @@ writeModeToFile(){
     }
 }
 
-readContentStringFromFile(){
+readContentStringFromBitfocus(){
 
     variable := "loadContent"
 
@@ -172,7 +172,7 @@ returnToDefaultScreen(){
 
     if !IsSet(mode){
         mode := 0
-        writeModeToFile()
+        writeModeToBitfocus()
     }
 
     ;live video mode
@@ -219,13 +219,17 @@ clickPublish(){
         if A_Index > 4 
             break
     }
-    writePublishedToFile
+    writePublishedToBitfocus
 }
 
 clickEditSigns(){
-    click 1170,890
-    sleep 50
-    click 1170,890
+    while (PixelGetColor(1165,775) == 0xF1C400) {
+        click 1170,890
+        sleep 50
+        if A_Index > 4
+            break
+    }
+    writePublishedToBitfocus
 }
 
 clickClearSigns(){
@@ -239,7 +243,7 @@ clickClearSigns(){
         if A_Index > 4 
             break
     }
-    writePublishedToFile
+    writePublishedToBitfocus
 }
 
 LoadXkeysPreset(preset){
@@ -274,8 +278,8 @@ ClickContent(content){
     
 }
 
-;updates the published.txt file with the current published status
-writePublishedToFile(){
+;updates Bitfocus with the current published status
+writePublishedToBitfocus(){
     ; pixel location 1154, 774
     ; off color 0x999999
     ; on  color 0xF1C400

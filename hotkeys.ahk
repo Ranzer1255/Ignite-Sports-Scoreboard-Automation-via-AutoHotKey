@@ -30,6 +30,11 @@
     clickBlank
 }
 
+;Edit Signs
+!e::{
+    clickEditSigns
+}
+
 ;waving flag
 !f::{
     switchToOpConsole
@@ -51,9 +56,9 @@
     
 }
 
-;load content specified by file into center pane
+;load content specified by bitfocus into center pane
 !l::{
-    contentString := readContentStringFromFile()
+    contentString := readContentStringFromBitfocus()
 
     clickContentTab
     Search(contentString)
@@ -73,11 +78,11 @@
 
     if(mode==1){
         mode := 0
-        writeModeToFile()
+        writeModeToBitfocus()
         MsgBox "cc mode", "Mode", "t2"
     } else {
         mode := 1
-        writeModeToFile()
+        writeModeToBitfocus()
         MsgBox "live video mode", "Mode", "T2"
     }
 }
