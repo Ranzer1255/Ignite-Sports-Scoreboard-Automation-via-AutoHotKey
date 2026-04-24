@@ -1,17 +1,17 @@
 #Requires AutoHotkey v2.0
 #Include globalVars.ahk
 
-join( strArray ){
+join( strArray, delemiter ){
     s := ""
     for i,v in strArray
-        s .= ", " . v
-    Return SubStr(s, 3)
+        s .= delemiter . v
+    Return SubStr(s, StrLen(delemiter)+1)
 }
 
 join2D( strArray2D ){
     s := ""
     for i,array in strArray2D
-        s.= ", [" . join(array) . "]"
+        s.= ", [" . join(array, " , ") . "]"
     Return SubStr(s,3)
 }
 
