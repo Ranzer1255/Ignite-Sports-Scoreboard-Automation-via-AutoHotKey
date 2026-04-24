@@ -1,7 +1,9 @@
 #Requires AutoHotkey v2.0
 
 ;current active sport Defaults to Football
-currentSport := Sport.Football
+Global currentSport := Sport.Football
+
+Global LastScoreboard := Layouts.FootballScoreboard
 
 ;Video spot array moved to vMix
 ; spots :=   [[1, 1],
@@ -63,9 +65,8 @@ Class Sport {
 Class Layouts {
     ;3 element array, [Used Layouts Row, Used Layouts Col, Sport]
     static FootballScoreboard => [1,1,Sport.Football]
-    static FootballFullScreen => [1,3,Sport.Football]
-    static SoccerScoreboard   => [1,2,Sport.Soccer]
-    static SoccerFullScreen   => [0,0,Sport.Soccer] ;TODO: not built yet
+    static FullScreen         => [1,3,Sport.Football]
+    static SoccerScoreboard   => [3,1,Sport.Football]
     static PracticeBoard      => [2,4,Sport.Football]
     static EmergencyGeneral   => [2,1,Sport.None]
     static EmergencyWeather   => [2,2,Sport.None]

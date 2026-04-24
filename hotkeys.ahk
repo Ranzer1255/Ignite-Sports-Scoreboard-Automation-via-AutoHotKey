@@ -113,14 +113,16 @@ F9::{
 
 ;Full screen
 F13::{
-    LoadXkeysPreset(Layouts.FootballFullScreen)
+    LoadXkeysPreset(Layouts.FullScreen)
     clickPublish
 }
 
-;go to live
+;go to last scoreboard
 F14::{
-    clickCenterPane
-    clickLive
+    global LastScoreboard
+    LoadXkeysPreset(LastScoreboard)
+    sleep 50
+    clickPublish
 }
 
 ;General Evac
@@ -147,6 +149,7 @@ F24::{
     clickCenterPane
     sleep 50
     clickPublish
+    global LastScoreboard := Layouts.FootballScoreboard
 }
 
 ;Xkeys Soccer
@@ -154,6 +157,7 @@ F24::{
     switchToOpConsole
     LoadXkeysPreset(Layouts.SoccerScoreboard)
     clickPublish
+    global LastScoreboard := Layouts.SoccerScoreboard
 }
 
 ;Xkeys Special
