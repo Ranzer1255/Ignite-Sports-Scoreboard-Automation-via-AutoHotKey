@@ -232,20 +232,20 @@ writePublishedToBitfocus(){
     if WinActive("Ignite Sports"){
         IgniteSportsUI := UIA.ElementFromHandle("Ignite Sports")
         if ( parseHeader(IgniteSportsUI.Name)["mode"]=="Operator's Console"){
-        pixel := PixelGetColor(1154,774)
+            pixel := PixelGetColor(1154,774)
 
-        variable := "ignitePublished"
+            variable := "ignitePublished"
 
-        switch pixel{
-            case 0x999999: ;off
-                WrtieBitfocusCustomVariable(variable,"off")
-            case 0xF1C400: ;on  
-                WrtieBitfocusCustomVariable(variable,"on")
-            default: 
-                WrtieBitfocusCustomVariable(variable,"ERR: WRONG PAGE")
+            switch pixel{
+                case 0x999999: ;off
+                    WrtieBitfocusCustomVariable(variable,"off")
+                case 0xF1C400: ;on  
+                    WrtieBitfocusCustomVariable(variable,"on")
+                default: 
+                    WrtieBitfocusCustomVariable(variable,"ERR: WRONG PAGE")
+            }
         }
     }
-}
 }
 
 writeSelectedLayoutToBitfocus(){

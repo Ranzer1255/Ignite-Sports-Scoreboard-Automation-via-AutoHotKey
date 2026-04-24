@@ -63,15 +63,20 @@ Class Sport {
 }
 
 Class Layouts {
-    ;3 element array, [Used Layouts Row, Used Layouts Col, Sport]
-    static FootballScoreboard => [1,1,Sport.Football]
-    static FullScreen         => [1,3,Sport.Football]
-    static SoccerScoreboard   => [3,1,Sport.Football]
-    static PracticeBoard      => [2,4,Sport.Football]
-    static EmergencyGeneral   => [2,1,Sport.None]
-    static EmergencyWeather   => [2,2,Sport.None]
-    static FieldDay           => [2,3,Sport.Football]
-    static TestMode           => [2,5,Sport.None]
-    static FallScorebard      => [1,4,Sport.Football]
-    static HalloweenSb        => [1,5,Sport.Football]
+    ;4 element array, [Used Layouts Row, Used Layouts Col, Sport, Layout name]
+    static FootballScoreboard => [1,1,Sport.Football, "1 - Split Scoreboard"]
+    static FullScreen         => [1,3,Sport.Football, "4 - Full Screen w. Clock"]
+    static SoccerScoreboard   => [3,1,Sport.Football, "22 - Split Scoreboard Soccer (but really football)"]
+    static PracticeBoard      => [2,4,Sport.Football, "99s - Special"]
+    static EmergencyGeneral   => [2,1,Sport.None, "88GE - General Evac"]
+    static EmergencyWeather   => [2,2,Sport.None, "88WE - Weather Evac"]
+    static FieldDay           => [2,3,Sport.Football, "98 - Generic Field Day"]
+    static TestMode           => [2,5,Sport.None, "Test mode"]
+    static FallScorebard      => [1,4,Sport.Football, "5 - fall Scoreboard"]
+    static HalloweenSb        => [1,5,Sport.Football, "5 - Halloween Scoreboard"]
+}
+
+Class ISModes {
+    static OpConsole    => "Operator's Console"
+    static LayoutEditor => "Layout Editor"
 }
