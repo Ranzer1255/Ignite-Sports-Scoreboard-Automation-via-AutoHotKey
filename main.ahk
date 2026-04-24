@@ -7,3 +7,4 @@
 
 ;background functions
 SetTimer(writePublishedToBitfocus,5000)
+SetTimer(writeSelectedLayoutToBitfocus,2000)

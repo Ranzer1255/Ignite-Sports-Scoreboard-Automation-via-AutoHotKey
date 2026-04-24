@@ -2,6 +2,7 @@
 
 #Include globalVars.ahk
 #Include utils.ahk
+#Include Lib\UIA.ahk
 
 /*
 this method generates the X,Y coords for the mouse click in the bottom pannel from 
@@ -229,6 +230,8 @@ writePublishedToBitfocus(){
     ; no button 0x262626
 
     if WinActive("Ignite Sports"){
+        IgniteSportsUI := UIA.ElementFromHandle("Ignite Sports")
+        if ( parseHeader(IgniteSportsUI.Name)["mode"]=="Operator's Console"){
         pixel := PixelGetColor(1154,774)
 
         variable := "ignitePublished"
@@ -240,6 +243,17 @@ writePublishedToBitfocus(){
                 WrtieBitfocusCustomVariable(variable,"on")
             default: 
                 WrtieBitfocusCustomVariable(variable,"ERR: WRONG PAGE")
+        }
+    }
+}
+}
+
+writeSelectedLayoutToBitfocus(){
+    if WinActive("Ignite Sports"){
+        IgniteSportsUI := UIA.ElementFromHandle("Ignite Sports")
+        header := parseHeader(IgniteSportsUI.Name)
+        if (header["mode"]=="Operator's Console"){
+            WrtieBitfocusCustomVariable("igniteSelectedLayout",header["layout"])
         }
     }
 }
