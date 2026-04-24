@@ -143,14 +143,21 @@ Search(searchString){
 
 clickPublish(){
     WinActivate "Ignite Sports"
+    Sleep 50
 
+    count := 0
     ;click publish
     while PixelGetColor(1165,775) != 0xF1C400 {
+        count++
         click 1175,770
         sleep 150
-        if A_Index > 5 
+        if A_Index > 5 {
+            MsgBox("clicked A_Index times and failed every time")
             break
+        }
+            
     }
+    ; MsgBox("took " . count . " clicks",,"T2")
     writePublishedToBitfocus
 }
 
