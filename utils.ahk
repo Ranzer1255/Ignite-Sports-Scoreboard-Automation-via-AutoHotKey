@@ -41,3 +41,20 @@ ReadBitfocusCustomVariable(variable){
         return ""
     } 
 }
+
+/*
+returns a map containing the following elements
+
+Mode: the current mode Ignite Sports is in
+Layout: the current layout, "untitled" if blnak
+*/
+parseHeader(header)
+{
+    parts := StrSplit(header, " - ")
+    rtn := map()
+    parts.RemoveAt(1)
+    rtn["mode"] := parts.RemoveAt(1)
+    rtn["layout"] := join(parts," - ")
+    
+    return(rtn)
+}
