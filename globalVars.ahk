@@ -1,9 +1,12 @@
 #Requires AutoHotkey v2.0
+#Include Lib/UIA.ahk
 
 ;current active sport Defaults to Football
 Global currentSport := Sport.Football
 
 Global LastScoreboard := Layouts.FootballScoreboard
+
+global IgniteSportsUI := UIA.ElementFromHandle("Ignite Sports")
 
 ;Video spot array moved to vMix
 ; spots :=   [[1, 1],
