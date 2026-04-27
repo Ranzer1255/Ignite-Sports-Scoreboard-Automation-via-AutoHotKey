@@ -5,6 +5,9 @@
 #Include hotkeys.ahk
 #Include utils.ahk
 
+;setup functions
+setDividerHeight
+
 ;background functions
 SetTimer(writePublishedToBitfocus,5000)
 SetTimer(writeSelectedLayoutToBitfocus,2000)
