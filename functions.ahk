@@ -53,68 +53,76 @@ clickCenterPane(){
 
 clickLive(){
     WinActivate "Ignite Sports"
-    click 1276, 40
+    ; click 1276, 40
+    IgniteSportsUI.ElementFromPath("QWQWQ/QIJ").Click("left")
     clickTopPanelButton(2)
 }
 
 clickBlank(){
     WinActivate "Ignite Sports"
-    click 1276, 40
+    ; click 1276, 40
+    IgniteSportsUI.ElementFromPath("QWQWQ/QIJ").Click("left")
     clickTopPanelButton(1)
 }
 
 clickContentTab(){
     WinActivate "Ignite Sports"
-    ;click content tab
-    Click 1340, 40
-    sleep 50
-    ;twice to make sure
-    Click 1340, 40
-    sleep 50
-    click 1340, 40
-    sleep 50
-    click 1340, 40
-    sleep 50
+    ; ;click content tab
+    ; Click 1340, 40
+    ; sleep 50
+    ; ;twice to make sure
+    ; Click 1340, 40
+    ; sleep 50
+    ; click 1340, 40
+    ; sleep 50
+    ; click 1340, 40
+    ; sleep 50
+
+    IgniteSportsUI.ElementFromPath("QWQWQ/QIJq").Click("left")
 }
 
 clickCCTab(){
     WinActivate "Ignite Sports"
     ;click cc tab
-    click 1510, 40
+    ; click 1510, 40
+    IgniteSportsUI.ElementFromPath("QWQWQ/QIJs").Click("left")
 }
 
 clickLayoutTab(){
     WinActivate "Ignite Sports"
-    Click 1793, 40
-    sleep 50
-    ;twice to make sure
-    Click 1793, 40
-    sleep 50
-    click 1793, 40
-    sleep 50
-    click 1793, 40
-    sleep 50
+    IgniteSportsUI.ElementFromPath("QWQWQ/QIJv").Click("left")
+    ; Click 1793, 40
+    ; sleep 50
+    ; ;twice to make sure
+    ; Click 1793, 40
+    ; sleep 50
+    ; click 1793, 40
+    ; sleep 50
+    ; click 1793, 40
+    ; sleep 50
 }
 
 clickUsedLayouts(){
     WinActivate "Ignite Sports"
-    Click 1720, 270
-    sleep 50
-    ;twice to make sure
-    Click 1720, 270
-    sleep 50
-    Click 1720, 270
-    sleep 50
-    Click 1720, 270
-    sleep 50
+    IgniteSportsUI.ElementFromPath("QWQWQQIJu").Click("left")
+    ; Click 1720, 270
+    ; sleep 50
+    ; ;twice to make sure
+    ; Click 1720, 270
+    ; sleep 50
+    ; Click 1720, 270
+    ; sleep 50
+    ; Click 1720, 270
+    ; sleep 50
 }
 
 clickReactionTab(){
     WinActivate "Ignite Sports"
-    click 1630, 270
-    sleep 50
-    click 1630, 270
-    sleep 50
+    IgniteSportsUI.ElementFromPath("QWQWQQIJt").Click("left")
+    ; click 1630, 270
+    ; sleep 50
+    ; click 1630, 270
+    ; sleep 50
 }
 
 readContentStringFromBitfocus(){
@@ -127,19 +135,7 @@ readContentStringFromBitfocus(){
 }
 
 Search(searchString){
-    ;click clear
-    click 1835, 70
-    sleep 50
-    click 1835, 70
-    sleep 50
-    
-    ;click Text box
-    click 1745, 70
-    sleep 50
-    click 1745, 70
-    sleep 50
-    
-    Send searchString
+    IgniteSportsUI.ElementFromPath("QWQWQ/QYQQ4").Value := searchString
 }
 
 clickPublish(){
@@ -150,7 +146,8 @@ clickPublish(){
     ;click publish
     while PixelGetColor(1165,775) != 0xF1C400 {
         count++
-        click 1175,770
+        ; click 1175,770
+        IgniteSportsUI.ElementFromPath("QWQ/Q/Qv").Click("left")
         sleep 150
         if A_Index > 5 {
             MsgBox("clicked A_Index times and failed every time")
@@ -164,7 +161,8 @@ clickPublish(){
 
 clickEditSigns(){
     while (PixelGetColor(1165,775) == 0xF1C400) {
-        click 1170,890
+        ; click 1170,890
+        IgniteSportsUI.ElementFromPath("QWQ/Q/Qw").Click("left")
         sleep 50
         if A_Index > 5
             break
@@ -178,7 +176,8 @@ clickClearSigns(){
     ;click clear signs
 
     while PixelGetColor(1165,775) == 0xF1C400 {
-        click 1170,940
+        ; click 1170,940
+        IgniteSportsUI.ElementFromPath("QWQ/Q/Q/").Click("left")
         sleep 50
         if A_Index > 4 
             break
@@ -230,7 +229,6 @@ writePublishedToBitfocus(){
     ; no button 0x262626
 
     if WinActive("Ignite Sports"){
-        IgniteSportsUI := UIA.ElementFromHandle("Ignite Sports")
         if ( parseHeader(IgniteSportsUI.Name)["mode"]=="Operator's Console"){
             pixel := PixelGetColor(1154,774)
 
@@ -263,6 +261,7 @@ isOpConsole(){
 }
 
 switchToOpConsole(){
+    WinActivate("Ignite Sports")
     if !isOpConsole() {
         ;menu
         click 25,50
