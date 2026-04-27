@@ -250,10 +250,8 @@ writePublishedToBitfocus(){
 
 writeSelectedLayoutToBitfocus(){
     if WinActive("Ignite Sports"){
-        IgniteSportsUI := UIA.ElementFromHandle("Ignite Sports")
-        header := parseHeader(IgniteSportsUI.Name)
-        if (header["mode"]=="Operator's Console"){
-            WrtieBitfocusCustomVariable("igniteSelectedLayout",header["layout"])
+        if (isOpConsole){
+            WrtieBitfocusCustomVariable("igniteSelectedLayout",parseHeader(IgniteSportsUI.name)["layout"])
         }
     }
 }
@@ -261,9 +259,7 @@ writeSelectedLayoutToBitfocus(){
 ; checks to see if we're in the Op console 
 isOpConsole(){
     WinActivate("Ignite Sports")
-    
-    pixel := PixelGetColor(1154,774)
-    return pixel != "0x262626"
+    return parseHeader(IgniteSportsUI.Name)["mode"] == "Operator's Console"
 }
 
 switchToOpConsole(){
