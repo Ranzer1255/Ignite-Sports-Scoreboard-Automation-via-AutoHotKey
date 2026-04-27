@@ -47,9 +47,22 @@
     clickPublish
 }
 
-;Alt+s: set up UI (position mouse on cross bar before pressing button)
+;Alt+s: set up UI 
 !s::{
-    MouseClickDrag "Left",,, 1530, 250 
+    setDividerHeight
+}
+
+;test key
+!t::{
+        el := IgniteSportsUI.ElementFromPath("QWQWQQYQQ/")
+        children := el.FindAll()
+        MsgBox("I found " . children.Length . " items inside the grid.")
+
+        for index, child in children {
+            ; This will highlight every 'invisible' tile one by one
+            child.Highlight()
+            Sleep(200)
+        }
 }
 
 ;Kill switch alt+q

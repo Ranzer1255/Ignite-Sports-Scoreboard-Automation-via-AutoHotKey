@@ -301,3 +301,11 @@ clickDown(down){
             
     }
 }
+
+setDividerHeight(){
+    CoordMode("Mouse","Screen")
+    thumb := IgniteSportsUI.ElementFromPath("QWQWS")
+    point := thumb.GetClickablePoint()
+    MouseClickDrag("Left",point.x,point.y, 1530, 270) 
+    CoordMode("Mouse","Client")
+}
